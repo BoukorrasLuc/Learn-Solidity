@@ -27,20 +27,22 @@ contract transfertWallet {
     }
 
     function withdrawAllMoney(address payable _to) public {
-        // retirer  l'argent du smart contract.
+        // recuperer le nombre d'argent de l'utilisateur qui appel le smart contract.
         uint _amount = Wallets[msg.sender].balance;
+
+        // Dire à l"utilisateur qu'il n'a plus cette argent.
+         Wallets[msg.sender].balance = 0;
+
         // transferer l'argent de la wallet de l'utilisateur qui appeler la function vers la wallet de l'utilisateur qui a appeler la function.
         _to.transfer(_amount);
 
     }
 
 
-
-
     receive() external payable {
         // Ajouter l'argent à la balance du smart contract.
-        wallets[msg.sender].balance += msg.value;
+        Wallets[msg.sender].balance += msg.value;
         //  Ajouter le nombre de paiement à la balance du smart contract.
-        wallets[msg.sender].numPayments++;
+        Wallets[msg.sender].numPayments++;
     }
 }
