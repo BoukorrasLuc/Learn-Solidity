@@ -35,6 +35,6 @@ contract Owner {
     function destroy(address payable _to) public {
         require(msg.sender == owner, "Vous n'etes pas le owner");
         selfdestruct(_to);
-
+    }
 
 }
