@@ -16,13 +16,13 @@ contract Owner {
 
     function setPaused(bool _paused) public {
         // On verifie que l'utilisateur qui appelle la fonction est bien le owner
-        require (msg.sender == owner, "Vous n'etes pas le owner");
+        require(msg.sender == owner, "Vous n'etes pas le owner");
         paused = _paused;
     }
 
     function setNombre(uint _nombre) public {
         require(!paused, "Le contrat est en pause");
-        require (msg.sender == owner, "Vous n'etes pas le owner");
+        require(msg.sender == owner, "Vous n'etes pas le owner");
         nombre = _nombre;
 
     }
